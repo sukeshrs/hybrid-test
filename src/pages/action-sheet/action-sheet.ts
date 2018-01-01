@@ -1,12 +1,19 @@
 import { Component } from '@angular/core';
 import { ActionSheetController, AlertController } from 'ionic-angular';
-
-
+/**
+ * Generated class for the ActionSheetComponent component.
+ *
+ * See https://angular.io/api/core/Component for more info on Angular
+ * Components.
+ */
 @Component({
-  selector: 'page-hello-ionic',
-  templateUrl: 'hello-ionic.html'
+  selector: 'action-sheet',
+  templateUrl: 'action-sheet.html'
 })
-export class HelloIonicPage {
+export class ActionSheetComponent {
+
+  text: string;
+
   constructor(private actionSheetCtrl: ActionSheetController,
     private alertCtrl: AlertController) {
 
@@ -47,4 +54,27 @@ export class HelloIonicPage {
     });
     actionSheet.present();
   }
+
+  public showConfirm() {
+    let confirm = this.alertCtrl.create({
+      title: 'Use this lightsaber?',
+      message: 'Do you agree to use this lightsaber to do good across the intergalactic galaxy?',
+      buttons: [
+        {
+          text: 'Disagree',
+          handler: () => {
+            console.log('Disagree clicked');
+          }
+        },
+        {
+          text: 'Agree',
+          handler: () => {
+            console.log('Agree clicked');
+          }
+        }
+      ]
+    });
+    confirm.present();
+  }
+
 }
